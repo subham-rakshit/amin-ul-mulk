@@ -1,0 +1,75 @@
+@layer utilities {
+  .transition-style {
+    @apply transition-all duration-500 ease-linear;
+  }
+  .transition-300 {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .custom-scrollbar {
+    @apply scrollbar-custom;
+  }
+  .custom-left-sidebar-scrollbar {
+    @apply sidebar-custom;
+  }
+  .text-soft {
+    @apply text-[#8A8D9C] font-poppins-rg;
+  }
+  .text-dark {
+    @apply text-[#545A61] font-poppins-md;
+  }
+  .no-focus {
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+  }
+  .rte-styles {
+    @apply bg-red-500 !important;
+  }
+  .table-scroll {
+    @apply overflow-x-auto !important;
+  }
+  /* Bi Yaber (F-E) */
+  .h1-bold {
+    @apply text-[55px] font-candara-bold leading-[67.14px] text-black-500;
+  }
+  .h2-bold {
+    @apply text-[40px] font-candara-bold leading-[48.83px] text-black-500;
+  }
+  .h3-bold {
+    @apply text-[32px] font-candara-bold leading-[39.06px] text-black-500;
+  }
+  .h4-bold {
+    @apply text-[28px] font-candara-bold leading-[34.18px] text-black-500;
+  }
+  .h5-bold {
+    @apply text-[24px] font-candara-bold leading-[29.30px] text-black-500;
+  }
+
+  .text-1 {
+    @apply text-[20px] font-candara-rg leading-[24.41px] text-black-500;
+  }
+  .text-2 {
+    @apply text-[18px] font-pp-neue-montreal-md leading-[24px] text-black-500;
+  }
+  .text-3 {
+    @apply text-[14px] font-pp-neue-montreal-md leading-[24px] text-black-500;
+  }
+
+  /* News Items Details Text Area Content Style */
+  .news-article-item-details-style section {
+    @apply flex flex-col gap-[12px];
+  }
+  .news-article-item-details-style h1 {
+    @apply text-[24px] font-candara-rg font-bold text-[#212121];
+  }
+  .news-article-item-details-style h4 {
+    @apply text-[20px] font-candara-rg font-bold text-[#212121];
+  }
+  .news-article-item-details-style p {
+    @apply text-[18px] font-candara-rg text-black-300;
+  }
+  .news-article-item-details-style li {
+    @apply text-[18px] font-candara-rg text-black-300;
+  }
+  .news-article-item-details-style ul {
+    @apply list-disc ml-6;
+  }
+}

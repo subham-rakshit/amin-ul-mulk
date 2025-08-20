@@ -1,0 +1,65 @@
+@layer utilities {
+  /* === Background Colors === */
+  .bg-light {
+    @apply bg-[#F6FAFD];
+  }
+  .bg-alt {
+    @apply bg-[#ECF6FE];
+  }
+  .bg-gray {
+    @apply bg-[#585858];
+  }
+  .bg-dark {
+    @apply bg-[#000000];
+  }
+
+  /* === Primary Colors === */
+  .bg-primary-100 {
+    @apply bg-[#80ABBF];
+  }
+  .bg-primary-200 {
+    @apply bg-[#669BB2];
+  }
+  .bg-primary-300 {
+    @apply bg-[#4DBAA5];
+  }
+  .bg-primary-400 {
+    @apply bg-[#00587E];
+  }
+
+  /* === Secondary Colors === */
+  .bg-secondary-100 {
+    @apply bg-[#E39095];
+  }
+  .bg-secondary-200 {
+    @apply bg-[#DE7A80];
+  }
+  .bg-secondary-300 {
+    @apply bg-[#D9464B];
+  }
+  .bg-secondary-400 {
+    @apply bg-[#C8212B];
+  }
+
+  /* === Text Colors === */
+  .text-gray-100 {
+    @apply text-[#9B9C9D];
+  }
+  .text-gray-200 {
+    @apply text-[#868889];
+  }
+  .text-gray-300 {
+    @apply text-[#727476];
+  }
+  .text-gray-400 {
+    @apply text-[#36393B];
+  }
+
+  /* === Text in Dark Mode === */
+  .text-dark-white {
+    @apply text-[#FFFFFF];
+  }
+  .text-dark-alt {
+    @apply text-[#ECF6FE];
+  }
+}

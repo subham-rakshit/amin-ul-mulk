@@ -1,0 +1,65 @@
+import { createClient } from "redis";
+
+// 1. Rquired data from env
+const host = process.env.REDIS_CACHE_HOST || "";
+const port = process.env.REDIS_CACHE_PORT || "";
+const password = process.env.REDIS_CACHE_PASSWORD ?? "";
+
+// 2. Construct Redis URL
+const redisUrl = `redis://${password}@${host}:${port}`;
+
+// 3. Use globalThis to persist the Redis client in development for Next.js HMR
+let client;
+
+if (!globalThis._redisClient) {
+  const redisClient = createClient({
+    url: redisUrl,
+  });
+
+  /* 4.
+    NOTE : ----
+    When ever redis instance creates, it'll emit certain events.
+    We can listen to those events and handle them accordingly.
+    For example, if we want to handle the error event, we can do it like this:
+
+    redisClient.on("error", (err) => {
+      console.error("Redis Client Error:", err);
+    });
+  */
+  redisClient.on("connect", () => console.info("Cache is connecting ..."));
+  redisClient.on("ready", () => console.info("Cache is ready"));
+  redisClient.on("end", () => console.info("Cache is disconnected"));
+  redisClient.on("reconnecting", () =>
+    console.info("Cache is reconnecting ...")
+  );
+  redisClient.on("error", (err) => console.error("Cache Error: ", err));
+
+  // 5. Make Connection to Redis DB
+  async function connectToRedis() {
+    try {
+      await redisClient.connect();
+      console.info("Redis connected successfully");
+    } catch (err) {
+      console.error("Redis conection faild, retrying in 5 seconds: ", err);
+      setTimeout(connectToRedis, 5000);
+    }
+  }
+
+  // 6.
+  connectToRedis();
+
+  // 7. When ever we close the node instance, we need to close the redis connection
+  if (process.env.NODE_ENV !== "production") {
+    process.on("SIGINT", async () => {
+      await redisClient.quit();
+      console.info("Cache is disconnected");
+    });
+  }
+
+  // 8. Globally expose the Redis client
+  globalThis._redisClient = redisClient;
+}
+
+client = globalThis._redisClient;
+
+export default client;

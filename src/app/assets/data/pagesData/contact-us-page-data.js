@@ -1,0 +1,42 @@
+export const ourAgentInContactUs = [
+  {
+    _id: "1",
+    tag: "Marketing",
+    name: "Ms. Amal Abdulla",
+    contact: "Tel : +971 9 222 8000 Fax : +971 9 222 8888",
+    extensionNumber: "123 - 127 - 191",
+    emailAddress: "freezone@eim.ae/<br /> marketing@fujairahfreezone.ae",
+  },
+  {
+    _id: "2",
+    tag: "Licensing",
+    name: "Ms. Amal Abdulla",
+    contact: "Tel : +971 9 222 8000 Fax : +971 9 222 8888",
+    extensionNumber: "122 - 124 - 125 - 126",
+    emailAddress: "icensing@fujairahfreezone.ae",
+  },
+  {
+    _id: "3",
+    tag: "Accounts",
+    name: "Ms. Amal Abdulla",
+    contact: "Tel : +971 9 222 8000 Fax : +971 9 222 8888",
+    extensionNumber: "122 - 124 - 125 - 126",
+    emailAddress: "icensing@fujairahfreezone.ae",
+  },
+  {
+    _id: "4",
+    tag: "Public Relations",
+    name: "Ms. Amal Abdulla",
+    contact: "Tel : +971 9 222 8000 Fax : +971 9 222 8888",
+    extensionNumber: "123 - 127 - 191",
+    emailAddress: "freezone@eim.ae/<br /> marketing@fujairahfreezone.ae",
+  },
+  {
+    _id: "5",
+    tag: "Administration",
+    name: "Ms. Amal Abdulla",
+    contact: "Tel : +971 9 222 8000 Fax : +971 9 222 8888",
+    extensionNumber: "122 - 124 - 125 - 126",
+    emailAddress: "icensing@fujairahfreezone.ae",
+  },
+];

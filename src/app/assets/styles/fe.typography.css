@@ -1,0 +1,37 @@
+@layer utilities {
+  .heading-1 {
+    @apply text-[62px] leading-[72px] font-bold;
+  }
+
+  .heading-2 {
+    @apply text-[40px] leading-[48px] font-bold;
+  }
+
+  .heading-3 {
+    @apply text-[34px] leading-[42px] font-bold;
+  }
+
+  .subtitle-1 {
+    @apply text-[24px] leading-[30px] font-bold;
+  }
+
+  .subtitle-2 {
+    @apply text-[20px] leading-[28px] font-bold;
+  }
+
+  .body1-bold {
+    @apply text-[18px] leading-[28px] font-semibold;
+  }
+
+  .body1 {
+    @apply text-[18px] leading-[28px] font-medium;
+  }
+
+  .body2-bold {
+    @apply text-[16px] leading-[24px] font-semibold;
+  }
+
+  .body2 {
+    @apply text-[16px] leading-[24px] font-medium;
+  }
+}
