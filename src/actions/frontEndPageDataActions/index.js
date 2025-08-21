@@ -11,7 +11,7 @@ import {
   getAllPublicTestimonials,
   getAllPublicWebsiteSettings,
   getPublicCourseDetails,
-  getPublicPageCMSContent
+  getPublicPageCMSContent,
 } from "../frontEndActions/action";
 
 // Parent Layout Data
@@ -82,10 +82,16 @@ export const fetchPublicNewsListingPageData = async (
 
 // About Page Data
 export const fetchPublicAboutPageData = async (linkId, lang = "en") => {
-  const [fielsResponse, contentResponse, homeContentResponse] = await Promise.all([
+  const [
+    fielsResponse,
+    contentResponse,
+    homeContentResponse,
+    testimonialResponse,
+  ] = await Promise.all([
     getAllPublicFiles(),
     getPublicPageCMSContent(linkId, lang),
     getPublicPageCMSContent("home", lang),
+    getAllPublicTestimonials(),
   ]);
 
   return {
@@ -93,6 +99,7 @@ export const fetchPublicAboutPageData = async (linkId, lang = "en") => {
     contentData: contentResponse?.contentDetails || {},
     otherInfoData: contentResponse?.otherInfoData || {},
     homeContentData: homeContentResponse?.contentDetails || {},
+    testimonials: testimonialResponse?.fetchData || [],
   };
 };
 
@@ -117,17 +124,16 @@ export const fetchPublicContactUsPageData = async (
   linkId = "",
   lang = "en"
 ) => {
-
   const [
     contentResponse,
     filesResponse,
     servicesResponse,
-    websiteSettingsResponse
+    websiteSettingsResponse,
   ] = await Promise.all([
     getPublicPageCMSContent(linkId, lang),
     getAllPublicFiles(),
     getAllPublicServices(),
-    getAllPublicWebsiteSettings()
+    getAllPublicWebsiteSettings(),
   ]);
 
   return {
@@ -216,15 +222,8 @@ export const fetchPublicHomePageData = async (linkId = "", lang = "") => {
 };
 
 // Package Listing Page Data
-export const fetchPublicPackagesPageData = async (
-  linkId = "",
-  lang = "en"
-) => {
-
-  const [
-    contentResponse,
-    filesResponse,
-  ] = await Promise.all([
+export const fetchPublicPackagesPageData = async (linkId = "", lang = "en") => {
+  const [contentResponse, filesResponse] = await Promise.all([
     getPublicPageCMSContent(linkId, lang),
     getAllPublicFiles(),
   ]);
@@ -237,15 +236,8 @@ export const fetchPublicPackagesPageData = async (
 };
 
 // Services Listing Page Data
-export const fetchPublicServicesPageData = async (
-  linkId = "",
-  lang = "en"
-) => {
-
-  const [
-    contentResponse,
-    filesResponse,
-  ] = await Promise.all([
+export const fetchPublicServicesPageData = async (linkId = "", lang = "en") => {
+  const [contentResponse, filesResponse] = await Promise.all([
     getPublicPageCMSContent(linkId, lang),
     getAllPublicFiles(),
   ]);

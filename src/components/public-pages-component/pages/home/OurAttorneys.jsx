@@ -3,65 +3,15 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Slider from "react-slick";
-import { BackgroundRevealButton } from "../..";
 
+import { getImageFullUrl } from "@/utils/helper-functions";
+import { getFileSettingsValue } from "@/utils/website-settings-helper";
 import { useMemo, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 
-const teams = [
-  {
-    id: "1",
-    name: "attorney_1_name",
-    imageSrc: "/amin-ul-miulk-law-firm/team/team_1_1.jpg",
-    designation: "attorney_1_designation",
-    socials: {
-      facebook: "#",
-      twitter: "#",
-      instagram: "#",
-      linkedin: "#",
-    },
-  },
-  {
-    id: "2",
-    name: "attorney_2_name",
-    imageSrc: "/amin-ul-miulk-law-firm/team/team_1_2.jpg",
-    designation: "attorney_2_designation",
-    socials: {
-      facebook: "#",
-      twitter: "#",
-      instagram: "#",
-      linkedin: "#",
-    },
-  },
-  {
-    id: "3",
-    name: "attorney_3_name",
-    imageSrc: "/amin-ul-miulk-law-firm/team/team_1_3.jpg",
-    designation: "attorney_3_designation",
-    socials: {
-      facebook: "#",
-      twitter: "#",
-      instagram: "#",
-      linkedin: "#",
-    },
-  },
-  {
-    id: "4",
-    name: "attorney_4_name",
-    imageSrc: "/amin-ul-miulk-law-firm/team/team_1_4.jpg",
-    designation: "attorney_4_designation",
-    socials: {
-      facebook: "#",
-      twitter: "#",
-      instagram: "#",
-      linkedin: "#",
-    },
-  },
-];
-
-const OurAttorneys = ({ sectionId = "" }) => {
+const OurAttorneys = ({ sectionId = "", data = [], filesList = [] }) => {
   const [sliderRef, setSliderRef] = useState(null);
   const translate = useTranslations();
 
@@ -99,6 +49,13 @@ const OurAttorneys = ({ sectionId = "" }) => {
     };
   }, []);
 
+  // Get Iamge Full URL
+  const getImageURL = (id) => {
+    return getImageFullUrl(
+      getFileSettingsValue(filesList, id)?.fileUrl ?? null
+    );
+  };
+
   return (
     <section
       id={sectionId}
@@ -116,7 +73,7 @@ const OurAttorneys = ({ sectionId = "" }) => {
             </h2>
           </div>
 
-          <BackgroundRevealButton
+          {/* <BackgroundRevealButton
             href="#"
             label={translate("attorney_btn_label")}
             borderColor="border-dark-color"
@@ -124,7 +81,7 @@ const OurAttorneys = ({ sectionId = "" }) => {
             textSize="body2"
             hoverBgColor="group-hover:bg-secondary"
             className="w-fit px-5 py-[12px]"
-          />
+          /> */}
         </div>
 
         {/* Attorneys */}
@@ -148,11 +105,17 @@ const OurAttorneys = ({ sectionId = "" }) => {
             </button>
           </div>
 
-          <Slider ref={setSliderRef} {...settings}>
-            {teams.map((member) => (
-              <li key={member.id} className={`px-3`}>
-                <div className="relative w-full h-[400px] bg-primary border-b-[10px] border-gold rounded-[50px] overflow-hidden group">
-                  {/* <div className="w-full h-full flex flex-col items-center justify-center gap-2 absolute top-[-100%] left-0 group-hover:top-0 z-[99] bg-[#D99E0C50] transition-all duration-500 ease-in-out overflow-hidden">
+          {data && data.length > 0 && (
+            <Slider ref={setSliderRef} {...settings}>
+              {data.map((member, index) => {
+                const imageId = member?.image || "";
+                const name = member?.name || "";
+                const designation = member?.designation || "";
+
+                return (
+                  <li key={`member-${index + 1}`} className={`px-3`}>
+                    <div className="relative w-full h-[400px] bg-primary border-b-[10px] border-gold rounded-[50px] overflow-hidden group">
+                      {/* <div className="w-full h-full flex flex-col items-center justify-center gap-2 absolute top-[-100%] left-0 group-hover:top-0 z-[99] bg-[#D99E0C50] transition-all duration-500 ease-in-out overflow-hidden">
                 <h4 className="body1 text-dark-white primary-font-family font-medium">
                   {translate(member.name)}
                 </h4>
@@ -176,29 +139,41 @@ const OurAttorneys = ({ sectionId = "" }) => {
                 </div>
               </div> */}
 
-                  <div className="relative w-full h-[80%] group-hover:h-[100%] overflow-hidden rounded-b-[50px] transition-all duration-500 ease-in-out">
-                    <Image
-                      src={member.imageSrc}
-                      alt={translate(member.name)}
-                      fill
-                      priority
-                      sizes="(max-width: 767px) 100vw, 100vw"
-                      className="object-cover bg-cover bg-center"
-                    />
-                  </div>
+                      {imageId && (
+                        <div className="relative w-full h-[80%] group-hover:h-[100%] overflow-hidden rounded-b-[50px] transition-all duration-500 ease-in-out">
+                          {getImageURL(imageId) && (
+                            <Image
+                              src={getImageURL(imageId)}
+                              alt={name || "Member"}
+                              fill
+                              priority
+                              sizes="(max-width: 767px) 100vw, 100vw"
+                              className="object-cover bg-cover bg-center"
+                            />
+                          )}
+                        </div>
+                      )}
 
-                  <div className="w-full h-[20%] flex flex-col justify-center items-center gap-1 px-3">
-                    <h4 className="body1 text-light-color primary-font-family font-medium">
-                      {translate(member.name)}
-                    </h4>
-                    <p className="body3 text-light-color secondary-font-family font-normal">
-                      {translate(member.designation)}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </Slider>
+                      {name || designation ? (
+                        <div className="w-full h-[20%] flex flex-col justify-center items-center gap-1 px-3">
+                          {name && (
+                            <h4 className="body1 text-light-color primary-font-family font-medium">
+                              {name}
+                            </h4>
+                          )}
+                          {designation && (
+                            <p className="body3 text-light-color secondary-font-family font-normal">
+                              {designation}
+                            </p>
+                          )}
+                        </div>
+                      ) : null}
+                    </div>
+                  </li>
+                );
+              })}
+            </Slider>
+          )}
         </div>
       </div>
     </section>

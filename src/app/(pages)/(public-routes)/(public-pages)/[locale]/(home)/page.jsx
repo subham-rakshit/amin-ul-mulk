@@ -107,7 +107,11 @@ const HomePage = async ({ params }) => {
         currentLanguage={currentLanguage}
       />
 
-      <OurAttorneys sectionId="home-page-attorneys-section" />
+      <OurAttorneys
+        sectionId="home-page-attorneys-section"
+        data={contentData?.["home-section-7-attorneys-multi-attorneys"] || []}
+        filesList={filesList}
+      />
 
       <DepartmentSection
         sectionId="home-page-department-section"

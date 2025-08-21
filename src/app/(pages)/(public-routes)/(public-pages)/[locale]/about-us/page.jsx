@@ -1,13 +1,14 @@
 import { getPublicPageCMSContent } from "@/actions/frontEndActions/action";
 import { fetchPublicAboutPageData } from "@/actions/frontEndPageDataActions";
 import {
+  AboutCEOMessageSection,
   AboutPageContentSection,
+  AboutStatsSection,
   BlogsSection,
   CommonBannerSection,
-  DepartmentSection,
   GetInTouch,
   OurAttorneys,
-  OurServices,
+  TestimonialSection,
 } from "@/components/public-pages-component";
 import ROUTES from "@/constants/routes";
 import { getImageFullUrl } from "@/utils/helper-functions";
@@ -37,8 +38,13 @@ const AboutUsPage = async ({ params }) => {
   const currentLanguage = locale || "en";
 
   // Fetch nessary data
-  const { filesList, contentData, otherInfoData, homeContentData } =
-    await fetchPublicAboutPageData("about-us", currentLanguage);
+  const {
+    filesList,
+    contentData,
+    otherInfoData,
+    homeContentData,
+    testimonials,
+  } = await fetchPublicAboutPageData("about-us", currentLanguage);
 
   // Our Mission and Our Vision Data
   const about_details_section_image =
@@ -167,19 +173,28 @@ const AboutUsPage = async ({ params }) => {
           </div>
         ) : null}
 
+        <div className="max-screen-width mx-auto w-full px-2 md:px-5">
+          <AboutCEOMessageSection />
+        </div>
+
+        <AboutStatsSection
+          contentData={homeContentData}
+          filesList={filesList}
+        />
+
         {/* Our Services */}
-        <OurServices
+        {/* <OurServices
           sectionId="about-page-our-services-section"
           filesList={filesList}
           currentLanguage={currentLanguage}
-        />
+        /> */}
 
         {/* Our Department */}
-        <DepartmentSection
+        {/* <DepartmentSection
           sectionId="about-page-department-section"
           filesList={filesList}
           currentLanguage={currentLanguage}
-        />
+        /> */}
 
         {/* Our Atorneys */}
         <OurAttorneys
@@ -196,6 +211,13 @@ const AboutUsPage = async ({ params }) => {
           sectionClasses="bg-primary py-[50px]"
           sectionId="about-page-blogs-section"
           currentLanguage={currentLanguage}
+        />
+
+        <TestimonialSection
+          contentData={homeContentData}
+          filesList={filesList}
+          currentLanguage={currentLanguage}
+          testimonials={testimonials}
         />
 
         {/* Get In Touch */}

@@ -4,6 +4,7 @@ import DepartmentSection from "./common/DepartmentSection";
 import GetInTouch from "./common/GetInTouch";
 import AboutCompanySection from "./pages/home/AboutCompanySection";
 import AboutSection from "./pages/home/AboutSection";
+import BlogSliderSection from "./pages/home/BlogSliderSection";
 import BlogsSection from "./pages/home/BlogsSection";
 import BusinessSetup from "./pages/home/BusinessSetup";
 import CoursesSection from "./pages/home/CoursesSection";
@@ -24,9 +25,10 @@ import SocialMediaSection from "./pages/home/SocialMediaSection";
 import StartupGridSection from "./pages/home/StartupGridSection";
 import TestimonialSection from "./pages/home/TestimonialSection";
 import WhySetupSection from "./pages/home/WhySetupSection";
-import BlogSliderSection from "./pages/home/BlogSliderSection";
 // 2 About Us Page
+import AboutCEOMessageSection from "./pages/about-us/AboutCEOMessageSection";
 import AboutPageContentSection from "./pages/about-us/AboutPageContentSection";
+import AboutStatsSection from "./pages/about-us/AboutStatsSection";
 import BannerSection from "./pages/about-us/BannerSection";
 import ChairmanMessageSection from "./pages/about-us/ChairmanMessageSection";
 import ContentSection from "./pages/about-us/ContentSection";
@@ -128,9 +130,11 @@ import SectionTabs from "./common/SectionTabs";
 import ServicesCard from "./common/ServicesCard";
 
 export {
+  AboutCEOMessageSection,
   AboutCompanySection,
   AboutPageContentSection,
   AboutSection,
+  AboutStatsSection,
   AnimatedShape,
   AppLogo,
   BackgroundBeams,
