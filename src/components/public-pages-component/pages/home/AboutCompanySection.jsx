@@ -68,7 +68,7 @@ const AboutCompanySection = ({
   return (
     <section
       id="home-page-about-company-section"
-      className="w-full pt-[30px] md:pt-[50px] pb-[150px] bg-light-color relative"
+      className="w-full pt-[30px] md:pt-[50px] pb-[200px] bg-light-color relative"
     >
       <div className="w-full max-screen-width mx-auto px-2 md:px-5">
         {/* Section Header */}
@@ -176,14 +176,14 @@ const AboutCompanySection = ({
         </div>
 
         {/* Stats */}
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-[-80px] lg:bottom-[-100px] z-[99] w-full max-screen-width rounded-[30px] md:rounded-[50px] px-2 py-3 md:px-5 md:py-[20px] overflow-hidden bg-secondary flex flex-col justify-center">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-[-150px] lg:bottom-[-100px] z-[99] w-full max-screen-width rounded-[30px] md:rounded-[50px] px-2 py-3 md:px-5 md:py-[20px] overflow-hidden bg-secondary flex flex-col justify-center">
           {statsHeading ? (
             <h2 className="subtitle-2 md:heading-3 text-light-color primary-font-family font-bold text-center mb-5 lg:mb-10">
               {statsHeading}
             </h2>
           ) : null}
 
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0">
             {Array(4)
               .fill(0)
               .map((_, index) => {
@@ -200,7 +200,7 @@ const AboutCompanySection = ({
                   >
                     {/* Logo */}
                     {getImageURL(logoId) ? (
-                      <div className="relative overflow-hidden w-[20px] h-[20px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]">
+                      <div className="relative overflow-hidden w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]">
                         <Image
                           src={getImageURL(logoId)}
                           alt={`${statsText || "Stats"}`}
@@ -214,14 +214,14 @@ const AboutCompanySection = ({
                     <div>
                       {/* Count */}
                       {statsCount ? (
-                        <h2 className="body2 md:subtitle-2 lg:heading-3-1 text-light-color secondary-font-family font-bold mb-1 text-center md:text-start">
+                        <h2 className="subtitle-2 lg:heading-3-1 text-light-color secondary-font-family font-bold mb-1 text-center md:text-start">
                           <span>{statsCount}</span>
                         </h2>
                       ) : null}
 
                       {/* Text */}
                       {statsText ? (
-                        <p className="body-0-4 lg:body2 text-light-color secondary-font-family font-normal">
+                        <p className="body2 text-light-color secondary-font-family font-normal">
                           {statsText}
                         </p>
                       ) : null}

@@ -16,7 +16,7 @@ const PricesSection = ({
     <>
       <section
         id="home-page-prices-section"
-        className="w-full pt-[100px] lg:pt-[120px] pb-[50px] bg-primary relative px-2 md:px-5"
+        className="w-full pt-[200px] lg:pt-[120px] pb-[50px] bg-primary relative px-2 md:px-5"
       >
         <div className="w-full max-screen-width mx-auto">
           {/* Section Header */}

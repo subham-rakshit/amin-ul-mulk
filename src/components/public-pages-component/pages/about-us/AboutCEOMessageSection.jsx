@@ -7,7 +7,7 @@ const AboutCEOMessageSection = () => {
   return (
     <div className="grid grid-cols-12 gap-5 md:gap-10 py-[50px]">
       {/* Message */}
-      <div className="col-span-7">
+      <div className="col-span-12 md:col-span-7">
         <h2 className="heading-3 md:heading-2-1 text-dark-color primary-font-family font-bold">
           CEO's Message
         </h2>
@@ -28,7 +28,7 @@ const AboutCEOMessageSection = () => {
       </div>
 
       {/* CEO Image */}
-      <div className="col-span-5 w-full max-w-[400px] h-[500px] relative overflow-hidden rounded-[12px] shadow-card-custom ltr:ml-auto rtl:mr-auto">
+      <div className="col-span-12 md:col-span-5 w-full max-w-[400px] h-[500px] relative overflow-hidden rounded-[12px] shadow-card-custom mx-auto md:mx-0 md:ltr:ml-auto md:rtl:mr-auto">
         <Image
           src="/amin-ul-miulk-law-firm/bg/about-us-ceo.png"
           alt="CEO"

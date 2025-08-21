@@ -21,7 +21,7 @@ const AboutStatsSection = ({ contentData = {}, filesList = [] }) => {
         </h2>
       ) : null}
 
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-0">
         {Array(4)
           .fill(0)
           .map((_, index) => {
@@ -36,7 +36,7 @@ const AboutStatsSection = ({ contentData = {}, filesList = [] }) => {
               >
                 {/* Logo */}
                 {getImageURL(logoId) ? (
-                  <div className="relative overflow-hidden w-[20px] h-[20px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]">
+                  <div className="relative overflow-hidden w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px]">
                     <Image
                       src={getImageURL(logoId)}
                       alt={`${statsText || "Stats"}`}
@@ -50,14 +50,14 @@ const AboutStatsSection = ({ contentData = {}, filesList = [] }) => {
                 <div>
                   {/* Count */}
                   {statsCount ? (
-                    <h2 className="body2 md:subtitle-2 lg:heading-3-1 text-light-color secondary-font-family font-bold mb-1 text-center md:text-start">
+                    <h2 className="subtitle-2 lg:heading-3-1 text-light-color secondary-font-family font-bold mb-1 text-center md:text-start">
                       <span>{statsCount}</span>
                     </h2>
                   ) : null}
 
                   {/* Text */}
                   {statsText ? (
-                    <p className="body-0-4 lg:body2 text-light-color secondary-font-family font-normal">
+                    <p className="body2 text-light-color secondary-font-family font-normal">
                       {statsText}
                     </p>
                   ) : null}
