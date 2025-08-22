@@ -223,8 +223,6 @@ const BlogPostForm = ({
     return <PageRefresh />;
   }
 
-  console.log(watch());
-
   return (
     <div
       className={`${globalStyleObj.backgroundLight900Dark300} mt-[40px] rounded-sm shadow-light overflow-hidden`}

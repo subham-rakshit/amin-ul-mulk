@@ -31,3 +31,11 @@ export const scrollToPosition = (target, duration = 1000) => {
 };
 
 const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
+// export const scrollToPosition = (target) => {
+//   if (typeof target === "string") {
+//     const section = document.getElementById(target.replace("#", ""));
+//     if (!section) return;
+//     section.scrollIntoView({ behavior: "smooth" });
+//   }
+// };
