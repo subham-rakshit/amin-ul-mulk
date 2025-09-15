@@ -78,7 +78,7 @@ const PublicPageFooter = ({
   // Footer Newsletter Widget Data
   const footer_newsletter_widget_data = getFESettingsFieldValues(
     settingsData,
-    ["link_three_title", "link_three_text"],
+    ["link_three_title", "link_three_text", "link_three_phone"],
     currentLanguage
   );
 
@@ -270,6 +270,7 @@ const PublicPageFooter = ({
                           <Link
                             href={`tel:${footer_contact_phone_data["footer-contact-value-option-one-2"]}`}
                             className="body3 md:body2 secondary-font-family font-normal text-light-color mt-3 inline-block"
+                            dir="ltr"
                           >
                             {
                               footer_contact_phone_data[
@@ -290,6 +291,7 @@ const PublicPageFooter = ({
                               ]
                             }`}
                             className="body3 md:body2 secondary-font-family font-normal text-light-color mt-1 inline-block"
+                            dir="ltr"
                           >
                             {
                               footer_contact_phone_data[
@@ -596,13 +598,20 @@ const PublicPageFooter = ({
                   </button>
                 </div>
 
-                {footer_newsletter_widget_data?.["link_three_text"] ? (
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: footer_newsletter_widget_data["link_three_text"],
-                    }}
-                    className="body2 secondary-font-family font-normal text-light-color"
-                  />
+                {footer_newsletter_widget_data?.["link_three_text"] ||
+                footer_newsletter_widget_data?.["link_three_phone"] ? (
+                  <p className="body2 secondary-font-family font-normal text-light-color flex items-center gap-1">
+                    {footer_newsletter_widget_data?.["link_three_text"] && (
+                      <span>
+                        {footer_newsletter_widget_data["link_three_text"]}
+                      </span>
+                    )}
+                    {footer_newsletter_widget_data?.["link_three_phone"] && (
+                      <span dir="ltr">
+                        {footer_newsletter_widget_data["link_three_phone"]}
+                      </span>
+                    )}
+                  </p>
                 ) : null}
               </div>
             ) : null}

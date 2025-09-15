@@ -174,7 +174,10 @@ const AboutUsPage = async ({ params }) => {
         ) : null}
 
         <div className="max-screen-width mx-auto w-full px-2 md:px-5">
-          <AboutCEOMessageSection />
+          <AboutCEOMessageSection
+            contentData={contentData}
+            filesList={filesList}
+          />
         </div>
 
         <AboutStatsSection

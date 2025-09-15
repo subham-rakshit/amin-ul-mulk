@@ -52,16 +52,16 @@ export const tabConfig = {
     },
     {
       tabName: "section-2",
-      sectionName: "about-us-section-1",
+      sectionName: "info-section",
     },
     {
       tabName: "section-3",
-      sectionName: "about-us-section-2",
+      sectionName: "mission-vission-section",
     },
-    // {
-    //   tabName: "section-4",
-    //   sectionName: "about-us-section-3",
-    // },
+    {
+      tabName: "section-4",
+      sectionName: "ceo-message",
+    },
   ],
   services: [
     {

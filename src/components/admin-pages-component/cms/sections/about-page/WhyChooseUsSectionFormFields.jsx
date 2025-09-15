@@ -1,6 +1,9 @@
 "use client";
 
-import { NormalBrowseFileInputFiled, NormalMultipleFixedInputFields } from "@/components";
+import {
+  NormalBrowseFileInputFiled,
+  NormalMultipleFixedInputFields,
+} from "@/components";
 import { useMemo } from "react";
 
 const WhyChooseUsSectionFormFields = ({
@@ -34,7 +37,7 @@ const WhyChooseUsSectionFormFields = ({
       {isHideInOtherLanguages && (
         <NormalBrowseFileInputFiled
           isFetching={isFetching}
-          labelText="Image"
+          labelText="Background Image"
           fieldId={`about-us-section-3-image`}
           allFilesResponse={allFilesResponse}
           searchValue={searchValue}
@@ -47,10 +50,11 @@ const WhyChooseUsSectionFormFields = ({
         />
       )}
 
+      {/* Our Mission Vision */}
       <NormalMultipleFixedInputFields
         stateDetails={stateDetails}
         isFetching={isFetching}
-        labelText="Cards"
+        labelText="Mission Vision"
         fieldId="about-us-section-4-cards"
         handleTextInputChange={handleTextInputChange}
         // handleTextEditorInputChange={handleTextEditorInputChange}

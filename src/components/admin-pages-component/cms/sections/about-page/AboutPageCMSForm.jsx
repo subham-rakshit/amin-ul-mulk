@@ -1,6 +1,7 @@
 import {
   AboutSectionFormFields,
   BannerSectionFormFields,
+  MessageSectionFormFields,
   WhyChooseUsSectionFormFields,
 } from "@/components";
 
@@ -69,7 +70,7 @@ const AboutPageCMSForm = ({
         />
       )}
 
-      {/* {selectedTab === "section-4" && (
+      {selectedTab === "section-4" && (
         <MessageSectionFormFields
           activeLang={activeTab}
           isFetching={isFetching}
@@ -82,7 +83,7 @@ const AboutPageCMSForm = ({
           adminRole={adminRole}
           permissionsList={permissionsList}
         />
-      )} */}
+      )}
     </>
   );
 };

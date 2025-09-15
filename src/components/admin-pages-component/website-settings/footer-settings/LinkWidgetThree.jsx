@@ -7,7 +7,6 @@ import {
 import { globalStyleObj } from "@/app/assets/styles";
 import {
   LanguageTabs,
-  NormalTextEditorInputFiled,
   NormalTextInputField,
   SettingsUpdateButton,
 } from "@/components";
@@ -29,6 +28,7 @@ const LinkWidgetThree = ({ userId, languagesResponse }) => {
   const [formData, setFormData] = useState({
     link_three_title: "",
     link_three_text: "",
+    link_three_phone: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -153,7 +153,7 @@ const LinkWidgetThree = ({ userId, languagesResponse }) => {
         />
 
         {/* Link Three Text */}
-        <NormalTextEditorInputFiled
+        {/* <NormalTextEditorInputFiled
           isFetching={isFetching}
           labelText="Text"
           fieldId="link-three-text"
@@ -163,7 +163,33 @@ const LinkWidgetThree = ({ userId, languagesResponse }) => {
           onChangeTextEditorFiled={onChangeTextEditorFiled}
           extraContainerClasses="mt-5"
           translateField={true}
+        /> */}
+        <NormalTextInputField
+          isFetching={isFetching}
+          labelText="Text"
+          fieldId="link-three-text"
+          fieldName="link_three_text"
+          placeholderText="Text"
+          inputValue={formData?.link_three_text || ""}
+          onChangeTextInputField={onChangeTextInputField}
+          extraContainerClasses="mt-5"
+          translateField={true}
         />
+
+        {/* Link Three Phone Number */}
+        {activeTab === "en" && (
+          <NormalTextInputField
+            isFetching={isFetching}
+            labelText="Ph No."
+            fieldId="link-three-phone"
+            fieldName="link_three_phone"
+            placeholderText="Phone Number"
+            inputValue={formData?.link_three_phone || ""}
+            onChangeTextInputField={onChangeTextInputField}
+            extraContainerClasses="mt-5"
+            translateField={false}
+          />
+        )}
 
         <div className="flex justify-end mt-5">
           <SettingsUpdateButton
