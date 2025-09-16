@@ -206,6 +206,7 @@ const ServiceContentSection = ({
                             <Link
                               href={`tel:${footer_contact_phone_data["footer-contact-value-option-one-2"]}`}
                               className="body3 md:body2 secondary-font-family font-normal text-light-color mt-3 inline-block"
+                              dir="ltr"
                             >
                               {
                                 footer_contact_phone_data[
@@ -222,6 +223,7 @@ const ServiceContentSection = ({
                             <Link
                               href={`tel:${footer_contact_phone_data["footer-contact-value-option-two-2"]}`}
                               className="body3 md:body2 secondary-font-family font-normal text-light-color mt-1 inline-block"
+                              dir="ltr"
                             >
                               {
                                 footer_contact_phone_data[

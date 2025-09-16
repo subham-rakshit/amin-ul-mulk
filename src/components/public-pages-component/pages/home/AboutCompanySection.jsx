@@ -128,12 +128,12 @@ const AboutCompanySection = ({
             </div>
           )}
 
-          {/* About Image */}
+          {/* Right Image */}
           {getImageURL(imageSrcId) && (
-            <div className="">
-              <div className="relative z-[99] w-full max-w-[500px] mx-auto bg-[#1b1b22] pb-[50px] md:pb-[75px] rounded-t-[30px] rounded-b-[500px]">
-                {/* Main Image */}
-                <div className="w-full h-[400px] md:h-[500px] relative overflow-hidden rounded-t-[30px] rounded-b-[500px]">
+            <div className="hidden lg:flex">
+              <div className="relative z-[99] w-full max-w-[500px] mx-auto bg-[#1b1b22] pb-[75px] rounded-t-[30px] rounded-b-[500px]">
+                {/* <!-- Image --> */}
+                <div className="w-full h-[500px] relative overflow-hidden rounded-t-[30px] rounded-b-[500px] flex items-center justify-center">
                   <Image
                     src={getImageURL(imageSrcId)}
                     alt="about"
@@ -143,30 +143,61 @@ const AboutCompanySection = ({
                   />
                 </div>
 
-                {/* Text Image Left */}
-                <div className="w-[120px] h-[140px] md:w-[180px] md:h-[210px] absolute bottom-0 left-[25px] md:left-[22px] overflow-hidden">
-                  <Image
-                    src="/amin-ul-miulk-law-firm/bg/dedicated-experience-of.svg"
-                    alt="text 1"
-                    fill
-                    sizes="(max-width: 767px) 100vw, 100vw"
-                    className="object-contain scale-[1.02]"
-                  />
-                </div>
+                {/* <!-- Left Text --> */}
+                {imageLeftText && (
+                  <div
+                    className="w-[195px] aspect-[13/15] absolute bottom-[30px] left-[10px] text-white"
+                    dir="ltr"
+                  >
+                    <svg viewBox="0 0 195.5 225.5" className="w-full h-full">
+                      <defs>
+                        <path
+                          id="curve1"
+                          d="M0,0c0,108.9,109.9,215,195.5,221.4"
+                        />
+                      </defs>
+                      <text className="fill-white text-[16px] font-bold primary-font-family tracking-wide">
+                        <textPath
+                          href="#curve1"
+                          startOffset="97%"
+                          textAnchor="end"
+                        >
+                          {imageLeftText}
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                )}
 
-                {/* Text Image Right */}
-                <div className="w-[100px] h-[110px] md:w-[170px] md:h-[170px] absolute bottom-0 right-[45px] md:right-[40px] overflow-hidden">
-                  <Image
-                    src="/amin-ul-miulk-law-firm/bg/years-in-industry.svg"
-                    alt="text 1"
-                    fill
-                    sizes="(max-width: 767px) 100vw, 100vw"
-                    className="object-contain scale-[0.92]"
-                  />
-                </div>
+                {/* <!-- Right Text --> */}
+                {imageRightText && (
+                  <div
+                    className="w-[195px] aspect-[13/15] absolute bottom-[30px] right-[5px] text-white"
+                    dir="ltr"
+                  >
+                    <svg viewBox="0 0 195.5 225.7" className="w-full h-full">
+                      <defs>
+                        <path
+                          id="curve2"
+                          d="M0,221.4C85.5,215,195.5,108.9,195.5,0"
+                        />
+                      </defs>
+                      <text className="fill-white text-[16px] font-bold primary-font-family tracking-wider">
+                        <textPath
+                          href="#curve2"
+                          startOffset="2%"
+                          textAnchor="start"
+                        >
+                          {imageRightText}
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                )}
 
+                {/* <!-- Count --> */}
                 {experienceNumber && (
-                  <div className="w-[50px] h-[50px] md:w-[75px] md:h-[75px] rounded-[50%] border border-secondary text-[32px] md:text-[52px] font-extrabold text-secondary test-font-family absolute bottom-0 left-1/2 -translate-x-1/2 flex items-start justify-center">
+                  <div className="w-[75px] h-[75px] rounded-full border border-secondary text-[52px] font-extrabold text-secondary test-font-family absolute bottom-0 left-1/2 -translate-x-1/2 flex items-start justify-center">
                     {experienceNumber}
                   </div>
                 )}

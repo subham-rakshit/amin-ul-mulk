@@ -112,7 +112,7 @@ const ServicePage = async ({ params }) => {
         currentLanguage={currentLanguage}
       />
 
-      <GetInTouch />
+      <GetInTouch currentLanguage={currentLanguage} />
     </>
   );
 };
