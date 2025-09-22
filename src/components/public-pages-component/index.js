@@ -67,6 +67,7 @@ import NewsDetailsSection from "./pages/news/news-item-details/NewsDetailsSectio
 // 6 Services Page
 import FlipServiceCard from "./pages/services/FlipServiceCard";
 import OtherServicesSection from "./pages/services/OtherServicesSection";
+import ServiceBanner from "./pages/services/ServiceBanner";
 import ServiceBannerSection from "./pages/services/ServiceBannerSection";
 import ServiceContentSection from "./pages/services/ServiceContentSection";
 import ServiceDetailsPage from "./pages/services/ServiceDetailsPage";
@@ -225,6 +226,7 @@ export {
   ScrollToSectionContainer,
   SectionInfo,
   SectionTabs,
+  ServiceBanner,
   ServiceBannerSection,
   ServiceContentSection,
   ServiceDetailsPage,

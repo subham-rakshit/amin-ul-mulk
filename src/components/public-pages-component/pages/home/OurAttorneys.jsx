@@ -1,12 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import Slider from "react-slick";
 
 import { getImageFullUrl } from "@/utils/helper-functions";
 import { getFileSettingsValue } from "@/utils/website-settings-helper";
 import { useMemo, useState } from "react";
+import { FaRegUser } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -61,7 +61,7 @@ const OurAttorneys = ({ sectionId = "", data = [], filesList = [] }) => {
       id={sectionId}
       className="w-full py-[50px] bg-light-color relative px-2 md:px-5"
     >
-      <div className="w-full max-screen-width mx-auto">
+      <div className="w-full max-screen-width mx-auto overflow-hidden">
         {/* Section Info */}
         <div className=" flex flex-col items-center md:flex-row md:items-end justify-between gap-5">
           <div className="flex flex-col justify-center gap-2 md:gap-5 lg:px-10">
@@ -85,9 +85,9 @@ const OurAttorneys = ({ sectionId = "", data = [], filesList = [] }) => {
         </div>
 
         {/* Attorneys */}
-        <div className="relative w-full mt-[50px] overflow-hidden">
+        <div className="relative w-full pt-[30px]">
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 -translate-y-1/2 z-[9] w-full flex items-center justify-between">
+          <div className="absolute top-[60%] -translate-y-[60%] z-[9] w-full flex items-center justify-between">
             <button
               type="button"
               onClick={() => sliderRef?.slickPrev()}
@@ -113,61 +113,37 @@ const OurAttorneys = ({ sectionId = "", data = [], filesList = [] }) => {
                 const designation = member?.designation || "";
 
                 return (
-                  <li key={`member-${index + 1}`} className={`px-3`}>
-                    <div className="relative w-full h-[400px] bg-primary border-b-[10px] border-gold rounded-[50px] overflow-hidden group">
-                      {/* <div className="w-full h-full flex flex-col items-center justify-center gap-2 absolute top-[-100%] left-0 group-hover:top-0 z-[99] bg-[#D99E0C50] transition-all duration-500 ease-in-out overflow-hidden">
-                <h4 className="body1 text-dark-white primary-font-family font-medium">
-                  {translate(member.name)}
-                </h4>
-                <p className="body3 text-dark-white secondary-font-family font-normal">
-                  {translate(member.designation)}
-                </p>
+                  <li key={`member-${index + 1}`} className={`px-3 group`}>
+                    <div className="relative w-full h-full flex flex-col items-center">
+                      <div className="relative z-[99] top-[50px] w-[100px] h-[100px] overflow-hidden rounded-full border-[3px] group-hover:border-[5px] bg-light-color border-gold flex items-center justify-center transition-all duration-300 ease-in-out">
+                        <FaRegUser className="text-dark-color text-[40px]" />
+                      </div>
 
-                <div className="flex items-center gap-2">
-                  <Link href={member.socials.facebook} target="_blank">
-                    <FaFacebookF size={15} color="white" />
-                  </Link>
-                  <Link href={member.socials.twitter} target="_blank">
-                    <FaTwitter size={15} color="white" />
-                  </Link>
-                  <Link href={member.socials.instagram} target="_blank">
-                    <FaInstagram size={15} color="white" />
-                  </Link>
-                  <Link href={member.socials.linkedin} target="_blank">
-                    <FaLinkedinIn size={15} color="white" />
-                  </Link>
-                </div>
-              </div> */}
+                      <div className="w-full border min-h-[320px] flex flex-col justify-between bg-transparent border-t border-r border-l border-b-[5px] group-hover:border-b-[10px] border-gold rounded-[50px] group px-5 py-5 transition-all duration-300 ease-in-out pt-[70px]">
+                        {name || designation ? (
+                          <>
+                            <div>
+                              {name && (
+                                <h3 className="subtitle-1-1 text-secondary primary-font-family font-[600] text-center">
+                                  {name}
+                                </h3>
+                              )}
 
-                      {imageId && (
-                        <div className="relative w-full h-[80%] group-hover:h-[100%] overflow-hidden rounded-b-[50px] transition-all duration-500 ease-in-out">
-                          {getImageURL(imageId) && (
-                            <Image
-                              src={getImageURL(imageId)}
-                              alt={name || "Member"}
-                              fill
-                              priority
-                              sizes="(max-width: 767px) 100vw, 100vw"
-                              className="object-cover bg-cover bg-center"
-                            />
-                          )}
-                        </div>
-                      )}
+                              {designation && (
+                                <p className="body-2-1 text-dark-color secondary-font-family font-normal text-center mt-3">
+                                  {designation}
+                                </p>
+                              )}
+                            </div>
 
-                      {name || designation ? (
-                        <div className="w-full h-[20%] flex flex-col justify-center items-center gap-1 px-3">
-                          {name && (
-                            <h4 className="body1 text-light-color primary-font-family font-medium">
-                              {name}
-                            </h4>
-                          )}
-                          {designation && (
-                            <p className="body3 text-light-color secondary-font-family font-normal">
-                              {designation}
+                            <p className="body3 text-dark-color secondary-font-family font-normal text-center mt-3">
+                              Lorem ipsum dolor sit, amet consectetur
+                              adipisicing elit. Tempora iste qui pariatur
+                              aliquam, veritatis aperiam vero!
                             </p>
-                          )}
-                        </div>
-                      ) : null}
+                          </>
+                        ) : null}
+                      </div>
                     </div>
                   </li>
                 );

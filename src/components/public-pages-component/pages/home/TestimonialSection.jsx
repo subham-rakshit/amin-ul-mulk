@@ -1,13 +1,12 @@
 "use client";
 
 import { getImageFullUrl } from "@/utils/helper-functions";
+import { sanitizeHTMLServer } from "@/utils/sanitizeHtmlString";
 import { getFileSettingsValue } from "@/utils/website-settings-helper";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Slider from "react-slick";
-import { HeroAnimatedLogo } from "../..";
-import { sanitizeHTMLServer } from "@/utils/sanitizeHtmlString";
 
 const TestimonialSection = ({
   contentData = {},
@@ -23,13 +22,33 @@ const TestimonialSection = ({
       dots: false,
       infinite: true,
       // speed: 500,
-      slidesToShow: 1,
+      slidesToShow: testimonials.length > 3 ? 3 : testimonials.length,
       slidesToScroll: 1,
       initialSlide: 0,
       autoplay: true,
       autoplaySpeed: 4000,
       pauseOnHover: true,
       arrows: false,
+      responsive: [
+        {
+          breakpoint: 1279, // < xl
+          settings: {
+            slidesToShow: testimonials.length > 2 ? 2 : testimonials.length, // lg
+          },
+        },
+        // {
+        //   breakpoint: 1023, // < lg
+        //   settings: {
+        //     slidesToShow: 2, // sm
+        //   },
+        // },
+        {
+          breakpoint: 639, // < sm
+          settings: {
+            slidesToShow: 1, // xs
+          },
+        },
+      ],
     };
   }, []);
 
@@ -69,46 +88,12 @@ const TestimonialSection = ({
         className="w-full py-[50px] bg-light-color relative px-2 md:px-5"
       >
         <div className="w-full max-screen-width mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Testimonial Left Image */}
-            {testimonialImage || testimonialLogoImage || testimonialLogoText ? (
-              <div className="relative w-full max-w-[500px] lg:max-w-full h-[300px] md:h-[500px] lg:h-[600px] overflow-hidden md:overflow-visible">
-                {getImageURL(testimonialImage) && (
-                  <div className="relative w-full h-full overflow-hidden rounded-[24px]">
-                    <Image
-                      src={getImageURL(testimonialImage)}
-                      alt="testimonial"
-                      fill
-                      sizes="(max-width: 767px) 100vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-
-                <div className="hidden md:flex absolute w-[85px] h-[250px] ltr:right-[-4px] rtl:left-[-4px] top-1/2 -translate-y-[46%]">
-                  <Image
-                    src="/amin-ul-miulk-law-firm/shapes/white_shape_no_bg.png"
-                    alt="shape"
-                    fill
-                    sizes="(max-width: 767px) 100vw, 100vw"
-                    className="object-cover rtl:scale-x-[-1]"
-                  />
-                </div>
-
-                <HeroAnimatedLogo
-                  positionClass="hidden md:flex absolute top-1/2 -translate-y-1/2 ltr:right-[-65px] rtl:left-[-65px] z-[99]"
-                  textColor="text-dark-color"
-                  logoImageUrl={getImageURL(testimonialLogoImage)}
-                  logoText={testimonialLogoText}
-                />
-              </div>
-            ) : null}
-
+          <div className="grid grid-cols-1">
             {/* Testimonial Right Carousel */}
             <div className="w-full lg:px-10 flex flex-col justify-center md:gap-5">
               {/* Section Header */}
               {subHeading || heading ? (
-                <div className="flex flex-col gap-3 mb-5 md:mb-10">
+                <div className="flex flex-col items-center gap-3 mb-5 md:mb-10">
                   {subHeading && (
                     <h3 className="subtitle-2 md:subtitle-1 text-secondary secondary-font-family font-bold">
                       {subHeading}
@@ -125,44 +110,68 @@ const TestimonialSection = ({
 
               {/* Testimonial Slider */}
               <div className="relative overflow-hidden">
-                <Slider ref={setSliderRef} {...settings}>
-                  {testimonials.map((testimonial) => (
-                    <div
-                      key={testimonial._id}
-                      className="relative min-h-[200px]"
-                    >
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[200px] overflow-hidden">
-                        <Image
-                          src="/amin-ul-miulk-law-firm/shapes/testi-3-bg-icon.png"
-                          alt="shape"
-                          fill
-                          sizes="(max-width: 767px) 100vw, 100vw"
-                          className="object-contain"
-                        />
-                      </div>
+                {/* Navigation Buttons */}
+                <div className="absolute top-[50%] -translate-y-[50%] z-[9] w-full flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => sliderRef?.slickPrev()}
+                    className="bg-[#00000080] hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center ltr:order-1 rtl:order-2"
+                  >
+                    <IoIosArrowBack size={20} />
+                  </button>
 
-                      {testimonial?.message?.[currentLanguage] && (
-                        <div
-                          className="relative z-[99] body2 text-dark-color secondary-font-family font-normal rtl:text-right"
-                          dangerouslySetInnerHTML={{
-                            __html: sanitizeHTMLServer(
-                              testimonial.message[currentLanguage]
-                            ),
-                          }}
-                        />
-                      )}
+                  <button
+                    type="button"
+                    onClick={() => sliderRef?.slickNext()}
+                    className="bg-[#00000080] hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center ltr:order-2 rtl:order-1"
+                  >
+                    <IoIosArrowForward size={20} />
+                  </button>
+                </div>
 
-                      {testimonial?.name?.[currentLanguage] && (
-                        <div className="relative z-[99] flex items-center ltr:justify-start rtl:justify-end gap-3 mt-10">
-                          <h3 className="subtitle-1 text-dark-color primary-font-family font-medium">
-                            {testimonial.name[currentLanguage]}
-                          </h3>
+                {testimonials.length > 0 && (
+                  <Slider ref={setSliderRef} {...settings}>
+                    {testimonials.map((testimonial) => (
+                      <div
+                        key={testimonial._id}
+                        className="relative min-h-[300px] p-2 group"
+                      >
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[200px] overflow-hidden">
+                          <Image
+                            src="/amin-ul-miulk-law-firm/shapes/testi-3-bg-icon.png"
+                            alt="shape"
+                            fill
+                            sizes="(max-width: 767px) 100vw, 100vw"
+                            className="object-contain"
+                          />
                         </div>
-                      )}
-                    </div>
-                  ))}
-                </Slider>
-                <div className="absolute z-[99] bottom-0 ltr:right-0 rtl:left-0 w-fit flex items-center justify-between gap-5">
+
+                        <div className="min-h-[250px] border-[2px] border-secondary group-hover:shadow-custom-three-sides px-2 py-5 rounded-md transition-all duration-500 ease-in-out flex flex-col justify-between">
+                          {testimonial?.message?.[currentLanguage] && (
+                            <div
+                              className="relative z-[99] body2 text-dark-color secondary-font-family font-normal rtl:text-right"
+                              dangerouslySetInnerHTML={{
+                                __html: sanitizeHTMLServer(
+                                  testimonial.message[currentLanguage]
+                                ),
+                              }}
+                            />
+                          )}
+
+                          {testimonial?.name?.[currentLanguage] && (
+                            <div className="relative z-[99] flex items-center ltr:justify-start rtl:justify-end gap-3">
+                              <h3 className="subtitle-1 text-dark-color primary-font-family font-medium">
+                                {testimonial.name[currentLanguage]}
+                              </h3>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                )}
+
+                {/* <div className="absolute z-[99] bottom-0 ltr:right-0 rtl:left-0 w-fit flex items-center justify-between gap-5">
                   <button
                     type="button"
                     onClick={() => sliderRef?.slickPrev()}
@@ -178,7 +187,7 @@ const TestimonialSection = ({
                   >
                     <IoIosArrowForward size={20} />
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

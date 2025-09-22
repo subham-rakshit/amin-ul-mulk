@@ -6,8 +6,8 @@ import {
 } from "@/actions/frontEndActions/action";
 import {
   BlogsSection,
-  CommonBannerSection,
   GetInTouch,
+  ServiceBanner,
   ServiceContentSection,
 } from "@/components/public-pages-component";
 import ROUTES from "@/constants/routes";
@@ -74,7 +74,7 @@ const ServicePage = async ({ params }) => {
 
   return (
     <>
-      <CommonBannerSection
+      <ServiceBanner
         sectionId={`${serviceDetails.slug}-service-banner-section`}
         bannerSrc={getImageFullUrl(serviceDetails.banner_image?.fileUrl)}
         bannerTitle={translations?.[currentLanguage]?.service_name || ""}

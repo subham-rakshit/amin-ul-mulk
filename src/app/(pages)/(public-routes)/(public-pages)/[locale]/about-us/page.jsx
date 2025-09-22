@@ -4,10 +4,8 @@ import {
   AboutCEOMessageSection,
   AboutPageContentSection,
   AboutStatsSection,
-  BlogsSection,
   CommonBannerSection,
   GetInTouch,
-  OurAttorneys,
   TestimonialSection,
 } from "@/components/public-pages-component";
 import ROUTES from "@/constants/routes";
@@ -200,21 +198,21 @@ const AboutUsPage = async ({ params }) => {
         /> */}
 
         {/* Our Atorneys */}
-        <OurAttorneys
+        {/* <OurAttorneys
           sectionId="about-page-attorneys-section"
           data={
             homeContentData?.["home-section-7-attorneys-multi-attorneys"] || []
           }
           filesList={filesList}
-        />
+        /> */}
 
         {/* Bolg Section */}
-        <BlogsSection
+        {/* <BlogsSection
           headingColor="text-light-color"
           sectionClasses="bg-primary py-[50px]"
           sectionId="about-page-blogs-section"
           currentLanguage={currentLanguage}
-        />
+        /> */}
 
         <TestimonialSection
           contentData={homeContentData}

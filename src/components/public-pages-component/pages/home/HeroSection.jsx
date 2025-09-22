@@ -62,7 +62,7 @@ const HeroSection = ({
     <>
       <section
         id="home-page-hero-section"
-        className="w-full flex justify-center items-center min-h-[80vh] md:min-h-[100vh] relative pt-[180px] px-2 md:px-5"
+        className="w-full flex justify-center items-center min-h-[80vh] md:min-h-[100vh] relative pt-[180px] px-2 md:px-5 shadow-lg"
       >
         {/* <div className="absolute inset-0 z-[9] bg-[#00000099] size-full overflow-hidden" /> */}
         {/* Overlay */}
