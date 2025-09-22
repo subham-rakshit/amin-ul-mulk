@@ -19,17 +19,15 @@ const ServiceBanner = ({
     >
       <div className="max-screen-width mx-auto relative z-[99] w-full h-full px-2 md:px-5 flex flex-col justify-center items-center">
         {bannerSrc && (
-          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-[40%] w-[120px] h-[120px] rounded-full border-[3px] border-secondary overflow-hidden flex justify-center items-center">
-            <div className="w-[100px] h-[100px] rounded-full relative overflow-hidden">
-              <Image
-                src={bannerSrc}
-                alt="icon"
-                fill
-                priority
-                sizes="(max-width: 767px) 100vw, 100vw"
-                className="object-contain invert brightness-0"
-              />
-            </div>
+          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-[40%] w-[120px] h-[120px] overflow-hidden flex justify-center items-center">
+            <Image
+              src={bannerSrc}
+              alt="icon"
+              fill
+              priority
+              sizes="(max-width: 767px) 100vw, 100vw"
+              className="object-contain invert brightness-0"
+            />
           </div>
         )}
 
