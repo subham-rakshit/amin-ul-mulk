@@ -17,9 +17,9 @@ const ServiceBanner = ({
       //   backgroundImage: `url(${bannerIamge || bannerSrc})`,
       // }}
     >
-      <div className="max-screen-width mx-auto relative z-[99] w-full h-full px-2 md:px-5 flex flex-col justify-center items-center">
+      <div className="max-screen-width mx-auto relative z-[99] w-full h-full px-2 md:px-5 flex flex-col justify-center items-center gap-5">
         {bannerSrc && (
-          <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-[40%] w-[120px] h-[120px] overflow-hidden flex justify-center items-center">
+          <div className="w-[60px] lg:w-[110px] h-[60px] lg:h-[110px] relative overflow-hidden flex justify-center items-center">
             <Image
               src={bannerSrc}
               alt="icon"
@@ -32,8 +32,8 @@ const ServiceBanner = ({
         )}
 
         {bannerTitle && (
-          <div className="mt-auto">
-            <h1 className="w-full heading-3 md:heading-1-1 text-light-color primary-font-family font-bold text-center whitespace-pre-line mb-8 capitalize">
+          <div className="mt-2 md:mt-5">
+            <h1 className="w-full heading-3 xl:heading-1-1 text-light-color primary-font-family font-bold text-center whitespace-pre-line mb-3 md:mb-5 capitalize">
               {bannerTitle}
             </h1>
 

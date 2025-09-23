@@ -119,7 +119,7 @@ const OurAttorneys = ({ sectionId = "", data = [], filesList = [] }) => {
                         <FaRegUser className="text-dark-color text-[40px]" />
                       </div>
 
-                      <div className="w-full border min-h-[320px] flex flex-col justify-between bg-transparent border-t border-r border-l border-b-[5px] group-hover:border-b-[10px] border-gold rounded-[50px] group px-5 py-5 transition-all duration-300 ease-in-out pt-[70px]">
+                      <div className="w-full border min-h-[320px] flex flex-col gap-4 bg-transparent border-t border-r border-l border-b-[5px] group-hover:border-b-[10px] border-gold rounded-[50px] group px-5 py-5 transition-all duration-300 ease-in-out pt-[70px]">
                         {name || designation ? (
                           <>
                             <div>
