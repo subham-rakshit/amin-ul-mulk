@@ -42,7 +42,7 @@ const AboutCEOMessageSection = ({ contentData = {}, filesList = [] }) => {
 
       {/* CEO Image */}
       {ceo_image && (
-        <div className="col-span-12 md:col-span-5 w-full max-w-[400px] h-[500px] relative overflow-hidden rounded-[12px] shadow-card-custom mx-auto md:mx-0 md:ltr:ml-auto md:rtl:mr-auto">
+        <div className="col-span-12 md:col-span-5 w-full max-w-[400px] h-[400px] relative overflow-hidden rounded-[12px] mx-auto md:mx-0 md:ltr:ml-auto md:rtl:mr-auto">
           {getImageURL(ceo_image) && (
             <Image
               src={getImageURL(ceo_image)}

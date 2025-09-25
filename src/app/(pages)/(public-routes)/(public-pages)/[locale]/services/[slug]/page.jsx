@@ -5,7 +5,6 @@ import {
   getPublicServiceDetails,
 } from "@/actions/frontEndActions/action";
 import {
-  BlogsSection,
   GetInTouch,
   ServiceBanner,
   ServiceContentSection,
@@ -105,12 +104,12 @@ const ServicePage = async ({ params }) => {
         filesList={filesList}
       />
 
-      <BlogsSection
+      {/* <BlogsSection
         headingColor="text-dark-white"
         sectionClasses="bg-primary-blue-500 py-[50px]"
         sectionId="service-page-blogs-section"
         currentLanguage={currentLanguage}
-      />
+      /> */}
 
       <GetInTouch currentLanguage={currentLanguage} />
     </>

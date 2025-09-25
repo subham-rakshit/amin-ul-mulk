@@ -109,6 +109,7 @@ const HomePage = async ({ params }) => {
 
       <OurAttorneys
         sectionId="home-page-attorneys-section"
+        contentData={contentData}
         data={contentData?.["home-section-7-attorneys-multi-attorneys"] || []}
         filesList={filesList}
       />

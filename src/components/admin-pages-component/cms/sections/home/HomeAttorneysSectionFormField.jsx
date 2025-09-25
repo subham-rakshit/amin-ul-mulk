@@ -84,10 +84,15 @@ const HomeAttorneysSectionFormField = ({
         updateMultiValueRepeaterChange={updateMultiValueRepeaterChange}
         translateField={true}
         extraContainerClasses="mt-5"
-        filedStructure={["IMAGE", "TEXT", "TEXT"]}
-        dataStructure={{ image: "", name: "", designation: "" }}
-        placeholderTexts={["", "Name", "Designation"]}
-        is_hidden={[isHideInOtherLanguages, true, true]}
+        filedStructure={["IMAGE", "TEXT", "TEXT", "TEXT_AREA"]}
+        dataStructure={{
+          image: "",
+          name: "",
+          designation: "",
+          description: "",
+        }}
+        placeholderTexts={["", "Name", "Designation", "Description"]}
+        is_hidden={[isHideInOtherLanguages, true, true, true]}
         colorGrade={colorGrade}
       />
     </>

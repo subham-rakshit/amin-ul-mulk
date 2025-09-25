@@ -88,54 +88,42 @@ const TestimonialSection = ({
         className="w-full py-[50px] bg-light-color relative px-2 md:px-5"
       >
         <div className="w-full max-screen-width mx-auto">
-          <div className="grid grid-cols-1">
-            {/* Testimonial Right Carousel */}
-            <div className="w-full lg:px-10 flex flex-col justify-center md:gap-5">
-              {/* Section Header */}
-              {subHeading || heading ? (
-                <div className="flex flex-col items-center gap-3 mb-5 md:mb-10">
-                  {subHeading && (
-                    <h3 className="subtitle-2 md:subtitle-1 text-secondary secondary-font-family font-bold">
-                      {subHeading}
-                    </h3>
-                  )}
+          {/* Section Header */}
+          {(subHeading || heading) && (
+            <div className="flex flex-col items-center gap-3 mb-5 md:mb-10">
+              {subHeading && (
+                <h3 className="subtitle-2 md:subtitle-1 text-secondary secondary-font-family font-bold">
+                  {subHeading}
+                </h3>
+              )}
 
-                  {heading && (
-                    <h2 className="heading-3 md:heading-2 text-dark-color primary-font-family font-bold">
-                      {heading}
-                    </h2>
-                  )}
-                </div>
-              ) : null}
+              {heading && (
+                <h2 className="heading-3 md:heading-2 text-dark-color primary-font-family font-bold">
+                  {heading}
+                </h2>
+              )}
+            </div>
+          )}
 
-              {/* Testimonial Slider */}
-              <div className="relative overflow-hidden">
-                {/* Navigation Buttons */}
-                <div className="absolute top-[50%] -translate-y-[50%] z-[9] w-full flex items-center justify-between">
-                  <button
-                    type="button"
-                    onClick={() => sliderRef?.slickPrev()}
-                    className="bg-[#00000080] hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center ltr:order-1 rtl:order-2"
-                  >
-                    <IoIosArrowBack size={20} />
-                  </button>
+          {/* Testimonial Slider */}
+          {testimonials.length > 0 && (
+            <div className="w-full flex">
+              {/* Pev Arrow Button */}
+              <div className="flex items-center ltr:order-1 rtl:order-3">
+                <button
+                  type="button"
+                  onClick={() => sliderRef?.slickPrev()}
+                  className="bg-dark-color hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center"
+                >
+                  <IoIosArrowBack size={20} />
+                </button>
+              </div>
 
-                  <button
-                    type="button"
-                    onClick={() => sliderRef?.slickNext()}
-                    className="bg-[#00000080] hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center ltr:order-2 rtl:order-1"
-                  >
-                    <IoIosArrowForward size={20} />
-                  </button>
-                </div>
-
-                {testimonials.length > 0 && (
+              {testimonials.length > 0 && (
+                <div className="w-full overflow-hidden order-2">
                   <Slider ref={setSliderRef} {...settings}>
                     {testimonials.map((testimonial) => (
-                      <div
-                        key={testimonial._id}
-                        className="relative min-h-[300px] p-2 group"
-                      >
+                      <div key={testimonial._id} className="relative p-2 group">
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[200px] overflow-hidden">
                           <Image
                             src="/amin-ul-miulk-law-firm/shapes/testi-3-bg-icon.png"
@@ -169,28 +157,21 @@ const TestimonialSection = ({
                       </div>
                     ))}
                   </Slider>
-                )}
+                </div>
+              )}
 
-                {/* <div className="absolute z-[99] bottom-0 ltr:right-0 rtl:left-0 w-fit flex items-center justify-between gap-5">
-                  <button
-                    type="button"
-                    onClick={() => sliderRef?.slickPrev()}
-                    className="bg-dark-color hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center rtl:order-2"
-                  >
-                    <IoIosArrowBack size={20} />
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => sliderRef?.slickNext()}
-                    className="bg-dark-color hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center"
-                  >
-                    <IoIosArrowForward size={20} />
-                  </button>
-                </div> */}
+              {/* Next Arrow Button */}
+              <div className="flex items-center ltr:order-3 rtl:order-1">
+                <button
+                  type="button"
+                  onClick={() => sliderRef?.slickNext()}
+                  className="bg-dark-color hover:bg-secondary transition-all duration-500 ease-in-out size-[40px] rounded-full text-light-color flex items-center justify-center"
+                >
+                  <IoIosArrowForward size={20} />
+                </button>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
     </>

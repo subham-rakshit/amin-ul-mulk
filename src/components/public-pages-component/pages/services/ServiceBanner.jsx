@@ -12,7 +12,7 @@ const ServiceBanner = ({
   return (
     <section
       id={sectionId}
-      className="w-full h-[70vh] bg-black relative shadow-card-custom-small flex flex-col items-center justify-center p-5"
+      className="w-full h-[80vh] bg-black relative shadow-card-custom-small flex flex-col items-center justify-center p-5"
       // style={{
       //   backgroundImage: `url(${bannerIamge || bannerSrc})`,
       // }}
