@@ -18,7 +18,7 @@ const AboutCEOMessageSection = ({ contentData = {}, filesList = [] }) => {
   if (!heading && !message && !ceo_name && !ceo_image) return null;
 
   return (
-    <div className="grid grid-cols-12 gap-5 md:gap-10 py-[50px]">
+    <div className="grid grid-cols-12 gap-5 md:gap-10 py-[50px] overflow-hidden">
       {/* Message */}
       <div className="col-span-12 md:col-span-7">
         {heading && (
@@ -42,14 +42,14 @@ const AboutCEOMessageSection = ({ contentData = {}, filesList = [] }) => {
 
       {/* CEO Image */}
       {ceo_image && (
-        <div className="col-span-12 md:col-span-5 w-full max-w-[400px] h-[400px] relative overflow-hidden rounded-[12px] mx-auto md:mx-0 md:ltr:ml-auto md:rtl:mr-auto">
+        <div className="col-span-12 md:col-span-5 w-full max-w-[400px] h-[300px] md:h-[400px] relative overflow-hidden rounded-[12px] mx-auto md:mx-0 md:ltr:ml-auto md:rtl:mr-auto hover:scale-[1.1] transition-all duration-500 ease-in-out">
           {getImageURL(ceo_image) && (
             <Image
               src={getImageURL(ceo_image)}
               alt="CEO"
               fill
               sizes="(max-width: 767px) 100vw, 100vw"
-              className="object-cover ltr:scale-x-[-1] bg-center"
+              className="object-contain ltr:scale-x-[-1] bg-center"
             />
           )}
         </div>
