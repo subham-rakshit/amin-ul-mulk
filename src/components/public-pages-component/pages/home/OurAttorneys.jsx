@@ -28,7 +28,7 @@ const OurAttorneys = ({
       dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
+      slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 2000,
@@ -91,7 +91,7 @@ const OurAttorneys = ({
 
         {/* Attorneys Slider */}
         {data.length > 0 && (
-          <div className="w-full flex">
+          <div className="w-full max-w-[1200px] mx-auto flex">
             {/* Pev Arrow Button */}
             <div className="flex items-center ltr:order-1 rtl:order-3">
               <button

@@ -15,43 +15,44 @@ const FrontEndBreadcrumb = ({
   return (
     <div className="flex justify-center items-center">
       <nav aria-label="Breadcrumb" className={navContainerClass}>
-        {fields.map((field, index) => (
-          <div
-            key={`${field.label}-${index + 1}`}
-            className="flex items-center gap-1"
-          >
-            {/* Separator */}
-            {index > 0 && (
-              <ChevronRight size={20} className="text-light-color" />
-            )}
-
-            {/* Render the breadcrumb item */}
-            <Link
-              href={field.link}
-              className={`text-light-color secondary-font-family leading-[100%]`}
+        <div className="flex items-center gap-1">
+          {fields.map((field, index) => (
+            <div
+              key={`${field.label}-${index + 1}`}
+              className="flex items-center gap-1"
             >
-              <span
-                className={`body-0-2 md:body1 secondary-font-family font-[400]`}
+              {/* Separator */}
+              {index > 0 && (
+                <ChevronRight size={20} className="text-light-color" />
+              )}
+
+              {/* Render the breadcrumb item */}
+              <Link
+                href={field.link}
+                className={`text-light-color secondary-font-family leading-[100%]`}
               >
-                {translate(field.label)}
-              </span>
-            </Link>
-          </div>
-        ))}
+                <span
+                  className={`body-0-2 md:body1 secondary-font-family font-[400]`}
+                >
+                  {translate(field.label)}
+                </span>
+              </Link>
+            </div>
+          ))}
+
+          {/* Separator */}
+          {currentTabName && (
+            <ChevronRight size={20} className="text-light-color" />
+          )}
+        </div>
 
         {/* Current Tab */}
         {currentTabName && (
-          <div className="flex items-center gap-1">
-            {/* Separator */}
-            <ChevronRight size={20} className="text-light-color" />
-
-            {/* Render the breadcrumb item */}
-            <span
-              className={`body-0-2 md:body1 text-light-color secondary-font-family font-[400]`}
-            >
-              {currentTabName}
-            </span>
-          </div>
+          <span
+            className={`body-0-2 md:body1 text-light-color secondary-font-family font-[400] text-center`}
+          >
+            {currentTabName}
+          </span>
         )}
       </nav>
     </div>
